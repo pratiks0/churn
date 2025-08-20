@@ -1,0 +1,22 @@
+// Use with VS Code extension "REST Client"
+POST http://127.0.0.1:8000/predict
+Content-Type: application/json
+
+{
+  "records": [{
+    "tenure": 5,
+    "monthly_charges": 850.0,
+    "total_charges": 4250.0,
+    "contract_type": "month-to-month",
+    "payment_method": "upi",
+    "internet_service": "fiber",
+    "streaming": true,
+    "tech_support": false,
+    "support_calls": 4,
+    "num_services": 3
+  }]
+}
+
+###
+
+GET http://127.0.0.1:8000/health
