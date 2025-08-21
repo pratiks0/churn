@@ -33,13 +33,10 @@ def predict_proba(records: list[dict]) -> list[float]:
     model, scaler, ohe, num_imputer, cat_imputer = load_artifacts()
     X = pd.DataFrame.from_records(records)
 
-    # process numeric
     X_num = scaler.transform(num_imputer.transform(X[numeric_features]))
 
-    # process categorical
     X_cat = ohe.transform(cat_imputer.transform(X[categorical_features]))
 
-    # combine
     X_proc = hstack([X_num, X_cat])
 
     probs = model.predict_proba(X_proc)[:, 1]
